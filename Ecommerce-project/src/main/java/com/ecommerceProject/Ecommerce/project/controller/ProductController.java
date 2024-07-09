@@ -5,6 +5,7 @@ import com.ecommerceProject.Ecommerce.project.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -20,7 +21,10 @@ public class ProductController {
         return ResponseEntity.ok(productsList);
     }
 
-
+    @GetMapping("/products/{id}")
+    public ResponseEntity<FakeProductResponseDTO> getProductById(@PathVariable("id") int id){
+        return ResponseEntity.ok(productService.getProductById(id));
+    }
 
 
 
