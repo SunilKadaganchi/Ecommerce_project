@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 public class ProductController {
@@ -16,14 +17,14 @@ public class ProductController {
     @Qualifier("productServiceImpl")
     private ProductService productService;
 
-    @GetMapping("/products")
-    public ResponseEntity<List<FakeProductResponseDTO>> getAllProducts(){
-        List<FakeProductResponseDTO> productsList = productService.getAllProducts();
+    @GetMapping("/product")
+    public ResponseEntity<List<Product>> getAllProducts(){
+        List<Product> productsList = productService.getAllProducts();
         return ResponseEntity.ok(productsList);
     }
 
-    @GetMapping("/products/{id}")
-    public ResponseEntity<FakeProductResponseDTO> getProductById(@PathVariable("id") int id){
+    @GetMapping("/product/{id}")
+    public ResponseEntity<Product> getProductById(@PathVariable("id") UUID id){
         return ResponseEntity.ok(productService.getProductById(id));
     }
 
@@ -35,20 +36,18 @@ public class ProductController {
         return ResponseEntity.ok(newAddedProduct);
     }
 
-
-
-
-
-
-
-
-    @GetMapping("/hello")
-    public ResponseEntity hello(){
-        return ResponseEntity.ok("Hello world");
-     }
-
-    @GetMapping("/greet")
-    public  ResponseEntity greet(){
-        return ResponseEntity.ok("Welcome to the Ecommerce..");
+    @PutMapping("/product/{productId}")
+    public ResponseEntity<Product> updateProduct(@PathVariable("productId") UUID productId , @RequestBody Product product){
+       Product updatedProduct = productService.updateProduct(productId,product);
+       return ResponseEntity.ok(updatedProduct);
     }
+
+    @DeleteMapping("/product/{productId}")
+    public  ResponseEntity<Boolean> deleteProduct(@PathVariable("productId")  UUID productId){
+        return ResponseEntity.ok(productService.deleteProduct(productId));
+    }
+
+
+
+
 }

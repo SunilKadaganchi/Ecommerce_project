@@ -9,15 +9,15 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 @Service("fakeProductServiceImpl")
-public class FakeProductServiceImpl implements ProductService{
+public class FakeProductServiceImpl {
     @Autowired
     private FakeStoreClient fakeStoreClient;
-    @Override
+
     public List<FakeProductResponseDTO> getAllProducts() {
         return fakeStoreClient.getAllProducts();
     }
 
-    @Override
+
     public FakeProductResponseDTO getProductById(int id) {
         FakeProductResponseDTO product =  fakeStoreClient.getProductById(id);
         if(product==null){
@@ -26,7 +26,7 @@ public class FakeProductServiceImpl implements ProductService{
         return product;
     }
 
-    @Override
+
     public Product createProduct(Product product) {
         return null;
     }
