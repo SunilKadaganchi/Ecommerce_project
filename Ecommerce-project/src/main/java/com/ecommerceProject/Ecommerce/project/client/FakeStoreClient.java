@@ -1,6 +1,6 @@
 package com.ecommerceProject.Ecommerce.project.client;
 
-import com.ecommerceProject.Ecommerce.project.DTO.FakeProductResponseDTO;
+import com.ecommerceProject.Ecommerce.project.DTO.FakeStore.FakeProductResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;

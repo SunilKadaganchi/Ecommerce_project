@@ -1,16 +1,16 @@
 package com.ecommerceProject.Ecommerce.project.service;
 
-import com.ecommerceProject.Ecommerce.project.DTO.FakeProductResponseDTO;
+import com.ecommerceProject.Ecommerce.project.DTO.ProductRequestDTO;
+import com.ecommerceProject.Ecommerce.project.DTO.ProductResponseDTO;
 import com.ecommerceProject.Ecommerce.project.model.Product;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.UUID;
 
 public interface ProductService {
-    public List<Product> getAllProducts();
-    public Product getProductById(UUID id);
-    public Product createProduct(Product product);
-    public Product updateProduct(UUID productId, Product product);
+    public List<ProductResponseDTO> getAllProducts();
+    public ProductResponseDTO getProductById(UUID id);
+    public ProductResponseDTO createProduct(ProductRequestDTO product);
+    public ProductResponseDTO updateProduct(UUID productId, ProductRequestDTO product);
     public boolean deleteProduct(UUID ProductId);
 }

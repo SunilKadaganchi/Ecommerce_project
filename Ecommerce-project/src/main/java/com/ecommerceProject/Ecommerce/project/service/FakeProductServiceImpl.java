@@ -1,6 +1,6 @@
 package com.ecommerceProject.Ecommerce.project.service;
 
-import com.ecommerceProject.Ecommerce.project.DTO.FakeProductResponseDTO;
+import com.ecommerceProject.Ecommerce.project.DTO.FakeStore.FakeProductResponseDTO;
 import com.ecommerceProject.Ecommerce.project.Exception.ProductNotFoundException;
 import com.ecommerceProject.Ecommerce.project.client.FakeStoreClient;
 import com.ecommerceProject.Ecommerce.project.model.Product;
