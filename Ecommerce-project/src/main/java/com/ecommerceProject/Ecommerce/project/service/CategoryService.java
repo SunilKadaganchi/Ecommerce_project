@@ -12,4 +12,5 @@ public interface CategoryService {
     public CategoryResponseDTO createCategory(CategoryRequestDTO categoryRequestDTO);
     public CategoryResponseDTO updateCategory(CategoryRequestDTO categoryRequestDTO,UUID categoryId);
     public boolean deleteCategory(UUID categoryId);
+    public long getTotalPriceForCategory(UUID categoryId);
 }

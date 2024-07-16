@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Locale;
 import java.util.UUID;
 
 @RestController
@@ -39,6 +40,11 @@ public class CategoryController {
     @DeleteMapping("/{id}")
     public ResponseEntity<Boolean> deleteCategory(@PathVariable("id") UUID id){
         return ResponseEntity.ok(categoryService.deleteCategory(id));
+    }
+
+    @GetMapping("/totalPrice/{id}")
+    public ResponseEntity<Long> getTotalPriceForCategory(@PathVariable("id") UUID id){
+        return ResponseEntity.ok(categoryService.getTotalPriceForCategory(id));
     }
 
 }

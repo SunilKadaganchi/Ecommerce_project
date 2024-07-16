@@ -5,7 +5,9 @@ import com.ecommerceProject.Ecommerce.project.DTO.CategoryResponseDTO;
 import com.ecommerceProject.Ecommerce.project.Exception.CategoryNotFoundException;
 import com.ecommerceProject.Ecommerce.project.mapper.CategoryEntityDTOMapper;
 import com.ecommerceProject.Ecommerce.project.model.Category;
+import com.ecommerceProject.Ecommerce.project.model.Product;
 import com.ecommerceProject.Ecommerce.project.repository.CategoryRepository;
+import com.ecommerceProject.Ecommerce.project.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +19,8 @@ import java.util.UUID;
 public class CategoryServiceImpl  implements CategoryService{
     @Autowired
     private CategoryRepository categoryRepository;
+    @Autowired
+    private ProductRepository productRepository;
 
     @Override
     public List<CategoryResponseDTO> getAllCategories() {
@@ -52,5 +56,22 @@ public class CategoryServiceImpl  implements CategoryService{
     public boolean deleteCategory(UUID categoryId) {
         return false;
     }
+
+    @Override
+    public long getTotalPriceForCategory(UUID categoryId) {
+        Category category = categoryRepository.findById(categoryId).orElseThrow(
+                ()->new CategoryNotFoundException("Category Not Found of CategoryID :"+categoryId)
+        );
+
+        List<Product> productList = productRepository.findByCategoryId(categoryId);
+        long totalCost = 0;
+        for(Product item:productList){
+            System.out.println(item);
+            totalCost += item.getPrice();
+        }
+
+        return totalCost;
+    }
+
 }
 
